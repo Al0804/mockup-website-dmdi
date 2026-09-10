@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naskah Khutbah — Dewan Masjid Digital Indonesia</title>
+  <meta name="description" content="Jelajahi seluruh naskah khutbah Jumat, Idul Fitri, dan Gerhana dari Dewan Masjid Digital Indonesia. Cari berdasarkan judul, penulis, atau kategori.">
+  <link rel="icon" href="images/logo.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="khutbah">
+
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main-content">
+    <div class="page-banner">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Beranda</a>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+          <span>Khutbah</span>
+        </div>
+
+        <h1 class="page-banner-title">Naskah Khutbah</h1>
+        <p class="page-banner-desc">Kumpulan naskah khutbah Jumat, Idul Fitri, dan Gerhana yang disusun oleh ulama dan da'i dari berbagai latar belakang bahasa. Gunakan pencarian atau filter kategori untuk menemukan naskah yang Anda butuhkan.</p>
+
+        <form class="search-bar" id="searchForm" role="search">
+          <div class="search-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="searchInput" class="search-input" placeholder="Cari judul atau nama penulis..." aria-label="Cari naskah khutbah">
+          </div>
+          <button type="submit" class="btn btn-primary search-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Cari
+          </button>
+        </form>
+
+        <div class="filter-row" id="filterRow">
+          <!-- chip kategori dirender otomatis lewat js/listing.js -->
+        </div>
+      </div>
+    </div>
+
+    <div class="listing-wrap reveal">
+      <div class="container">
+        <p class="result-count" id="resultCount"></p>
+
+        <div class="card-grid" id="listingGrid"></div>
+
+        <div class="empty-state" id="emptyState" style="display:none">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <strong>Naskah tidak ditemukan</strong>
+          <p>Coba kata kunci lain atau pilih kategori "Semua" untuk melihat seluruh naskah khutbah.</p>
+        </div>
+
+        <div class="load-more-row" id="loadMoreRow">
+          <button type="button" class="btn btn-outline" id="loadMoreBtn">Muat Lebih Banyak</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer reveal" id="site-footer"></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/listing.js"></script>
+  <script>
+    document.addEventListener("components:ready", function () {
+      initListingPage({
+        data: KHUTBAH_DATA,
+        categories: KHUTBAH_CATEGORIES,
+        type: "khutbah",
+        detailPage: "khutbah-detail.html",
+        noun: "naskah khutbah"
+      });
+    });
+  </script>
+</body>
+</html>

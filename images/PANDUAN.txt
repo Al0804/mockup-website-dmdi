@@ -1,0 +1,31 @@
+PANDUAN MENAMBAHKAN GAMBAR
+============================
+
+Taruh 2 file gambar berikut di folder "images/" ini (folder yang sama
+dengan file panduan ini berada), dengan NAMA FILE PERSIS seperti berikut:
+
+1. logo.png
+   -> Logo organisasi Dewan Masjid Digital Indonesia.
+   -> Muncul di header (pojok kiri atas) dan footer setiap halaman.
+   -> Disarankan: format PNG/SVG, latar belakang transparan, rasio persegi
+      (misalnya 300x300px).
+
+2. muhammad-symbol.png
+   -> Simbol/kaligrafi "Muhammad ﷺ" berwarna kuning/emas.
+   -> Muncul di sebelah kanan teks pada bagian "Tentang Kami" di beranda
+      (index.html).
+   -> Disarankan: format PNG dengan latar belakang transparan, rasio
+      persegi.
+
+CATATAN:
+- Nama file HARUS PERSIS "logo.png" dan "muhammad-symbol.png" (huruf kecil
+  semua) supaya otomatis terpasang. Jika ingin memakai nama lain, cari kode
+  <img src="images/logo.png" ...> di file index.html, khutbah.html,
+  buku.html, khutbah-detail.html, buku-detail.html (untuk logo), dan
+  <img src="images/muhammad-symbol.png" ...> di index.html (untuk simbol),
+  lalu sesuaikan nama filenya di sana.
+- Selama file belum ditambahkan, website akan tetap tampil rapi dengan
+  kotak placeholder bergaris putus-putus — jadi tidak akan terlihat rusak/
+  patah selama proses pengembangan.
+- File panduan .txt ini boleh dihapus kapan saja, tidak memengaruhi
+  tampilan maupun fungsi website.
