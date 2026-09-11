@@ -90,10 +90,14 @@ function buildListCard(item, config) {
   const dateOrYear = config.type === "khutbah" ? item.date : ("Terbit " + item.year);
   const extraLine = config.type === "khutbah" ? item.language : item.pages;
   const extraIcon = config.type === "khutbah" ? Icons.globe : Icons.book;
+  const thumb = item.image
+    ? '<div class="card-thumb"><img src="' + item.image + '" alt="' + item.title + '" loading="lazy"></div>'
+    : '';
 
   return (
     '<article class="list-card list-card--' + config.type + '">' +
-      '<div class="card-icon">' + icon + "</div>" +
+      thumb +
+      (thumb ? '' : '<div class="card-icon">' + icon + "</div>") +
       '<span class="card-category">' + item.category + "</span>" +
       '<h3 class="card-title">' + item.title + "</h3>" +
       '<p class="card-excerpt">' + item.excerpt + "</p>" +

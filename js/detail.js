@@ -30,10 +30,16 @@ function initDetailPage(config) {
 
   const articleBody = document.getElementById("articleBody");
   if (articleBody) {
-    articleBody.innerHTML = item.content.map(function (p) { return "<p>" + p + "</p>"; }).join("");
+    // Naskah khutbah sudah menyertakan tag <p> sendiri (termasuk kelas
+    // untuk teks Arab/judul sub-khutbah), sedangkan data lama (mis. buku)
+    // masih berupa teks polos per paragraf — keduanya tetap didukung.
+    articleBody.innerHTML = item.content.map(function (p) {
+      return p.trim().indexOf("<") === 0 ? p : "<p>" + p + "</p>";
+    }).join("");
   }
 
   initShareBox(item);
+  initActionBox(item, config);
   renderRelated(item, config);
 }
 
@@ -81,6 +87,89 @@ function fallbackCopy(text, done) {
   try { document.execCommand("copy"); } catch (err) { /* tidak masalah bila gagal */ }
   document.body.removeChild(ta);
   if (done) done();
+}
+
+/* ---------- Unduh (file asli / .txt) & Cetak naskah ---------- */
+function initActionBox(item, config) {
+  const printBtn = document.getElementById("printBtn");
+  const downloadBtn = document.getElementById("downloadBtn");
+
+  if (printBtn) {
+    printBtn.addEventListener("click", function () {
+      window.print();
+    });
+  }
+
+  if (downloadBtn) {
+    if (item.file) {
+      // Unduh langsung file Word/PDF asli yang sudah disiapkan di folder images/
+      downloadBtn.href = item.file;
+      downloadBtn.setAttribute("download", slugify(item.title) + item.file.slice(item.file.lastIndexOf(".")));
+    } else {
+      // Cadangan: kalau belum ada file siap pakai, buat file .txt otomatis dari isi naskah
+      downloadBtn.href = "#";
+      downloadBtn.removeAttribute("download");
+      downloadBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        downloadAsText(item, config);
+      });
+    }
+  }
+}
+
+/* Ubah konten HTML naskah menjadi teks polos yang rapi untuk diunduh */
+function htmlToPlainText(html) {
+  return html
+    .replace(/<\/p>/gi, "\n\n")
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, "\"")
+    .replace(/&#39;/g, "'")
+    .trim();
+}
+
+function downloadAsText(item, config) {
+  const dateLine = config.type === "khutbah" ? item.date : ("Terbit " + item.year);
+  const parts = [];
+
+  parts.push(item.title);
+  parts.push("=".repeat(item.title.length));
+  parts.push("");
+  parts.push("Kategori : " + item.category);
+  parts.push("Penulis  : " + item.author);
+  parts.push((config.type === "khutbah" ? "Tanggal  : " : "Terbit   : ") + dateLine);
+  parts.push("");
+  parts.push("-".repeat(40));
+  parts.push("");
+
+  item.content.forEach(function (block) {
+    const text = htmlToPlainText(block);
+    if (text) parts.push(text, "");
+  });
+
+  parts.push("-".repeat(40));
+  parts.push("Diunduh dari Dewan Masjid Digital Indonesia — " + window.location.href);
+
+  const blob = new Blob([parts.join("\n")], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = slugify(item.title) + ".txt";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function slugify(str) {
+  return str
+    .toLowerCase()
+    .normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-+|-+$)/g, "");
 }
 
 /* ---------- Naskah / buku terkait ---------- */

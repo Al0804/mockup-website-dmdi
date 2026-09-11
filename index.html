@@ -1,60 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dewan Masjid Digital Indonesia — Bank Naskah Khutbah &amp; Buku Islami</title>
-  <meta name="description" content="Dewan Masjid Digital Indonesia menghimpun naskah khutbah Jumat, Idul Fitri, dan Gerhana, serta koleksi buku keislaman untuk khatib, da'i, dan umat.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Dewan Masjid Digital Indonesia — خادم الأمة والدعاة
+    </title>
+    <meta
+      name="description"
+      content="Dewan Masjid Digital Indonesia menghimpun naskah khutbah Jumat, Idul Fitri, dan Gerhana, serta koleksi buku keislaman untuk khatib, da'i, dan umat."
+    />
 
-  <!-- Favicon memakai file logo yang sama; ganti bila ingin favicon terpisah -->
-  <link rel="icon" href="images/logo.png" type="image/png">
+    <!-- Favicon memakai file logo yang sama; ganti bila ingin favicon terpisah -->
+    <link rel="icon" href="images/logo.png" type="image/png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body data-page="index">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-page="index">
+    <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
 
-  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+    <!-- Header dirender otomatis lewat js/components.js -->
+    <header class="site-header" id="site-header"></header>
 
-  <!-- Header dirender otomatis lewat js/components.js -->
-  <header class="site-header" id="site-header"></header>
+    <main id="main-content">
+      <span id="top"></span>
 
-  <main id="main-content">
-    <span id="top"></span>
+      <!-- ======================= TENTANG KAMI ======================= -->
+      <section id="tentang" class="about-section">
+        <div class="about-pattern" aria-hidden="true">
+          <svg
+            viewBox="0 0 240 240"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          >
+            <defs>
+              <pattern
+                id="geoPattern"
+                width="60"
+                height="60"
+                patternUnits="userSpaceOnUse"
+              >
+                <polygon
+                  points="30,6 54,30 30,54 6,30"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1"
+                ></polygon>
+                <rect
+                  x="14"
+                  y="14"
+                  width="32"
+                  height="32"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1"
+                ></rect>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#geoPattern)"></rect>
+          </svg>
+        </div>
 
-    <!-- ======================= TENTANG KAMI ======================= -->
-    <section id="tentang" class="about-section">
-      <div class="about-pattern" aria-hidden="true">
-        <svg viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <defs>
-            <pattern id="geoPattern" width="60" height="60" patternUnits="userSpaceOnUse">
-              <polygon points="30,6 54,30 30,54 6,30" fill="none" stroke="currentColor" stroke-width="1"></polygon>
-              <rect x="14" y="14" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1"></rect>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#geoPattern)"></rect>
-        </svg>
-      </div>
-
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-text">
-            <h1 class="about-title">Tentang Kami</h1>
-            <p class="about-desc">Seruan Masjid adalah wadah kolaborasi keilmuan Islam. Kami mengumpulkan dan menyediakan bank data naskah khutbah Jumat, Idul Fitri, dan Gerhana, yang disusun oleh ulama dan da'i dari berbagai latar belakang bahasa, menjadi jembatan antara keilmuan Islam dan praktik dakwah di lapangan.</p>
-            <div class="about-tags">
-              <span class="about-tag">Naskah Khutbah Jumat</span>
-              <span class="about-tag">Khutbah Idul Fitri</span>
-              <span class="about-tag">Khutbah Gerhana</span>
-              <span class="about-tag">Referensi Buku Islami</span>
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-text">
+              <h1 class="about-title">Tentang Kami</h1>
+              <div class="about-desc">
+                <p>
+                  Masjid adalah salah satu garda terdepan dalam membina ummat
+                  melalui kajian-kajian dan khutbah-khutbah dan sejenisnya
+                  dengan tujuan menjadikan ummat manusia khususnya ummat Islam
+                  taat secara totalitas kepada Allah SWT. Hal inilah yang akan
+                  menghantarkan negeri yang kita cintai ini dipenuhi Rahmat
+                  dan Berkah Allah SWT dari langit dan bumi.
+                </p>
+                <p class="arabic-quote">
+                  وَلَوْ اَنَّ اَهْلَ الْقُرٰٓى اٰمَنُوْا وَاتَّقَوْا
+                  لَفَتَحْنَا عَلَيْهِمْ بَرَكٰتٍ مِّنَ السَّمَاۤءِ
+                  وَالْاَرْضِ وَلٰكِنْ كَذَّبُوْا فَاَخَذْنٰهُمْ بِمَا
+                  كَانُوْا يَكْسِبُوْنَ
+                </p>
+                <p>
+                  Sekiranya penduduk negeri-negeri beriman dan bertakwa,
+                  niscaya Kami akan membukakan untuk mereka berbagai
+                  keberkahan dari langit dan bumi. Akan tetapi, mereka
+                  mendustakan (para rasul dan ayat-ayat Kami). Maka, Kami
+                  menyiksa mereka disebabkan oleh apa yang selalu mereka
+                  kerjakan. Al A’Raf: 96
+                </p>
+                <p>
+                  Dengan memahami, mengamalkan dan mendakwahkan semua ajaran
+                  Islam, serta mengharap Ridho Rahmat Allah SWT agar negeri
+                  yang kita cintai ini keluar dari keterpurukan menuju
+                  perabadaban emas yang dipenuhi Rahmat dan keberkahan Allah
+                  SWT.
+                </p>
+                <p class="arabic-quote">
+                  وَعَدَ اللّٰهُ الَّذِيْنَ اٰمَنُوْا مِنْكُمْ وَعَمِلُوا
+                  الصّٰلِحٰتِ لَيَسْتَخْلِفَنَّهُمْ فِى الْاَرْضِ كَمَا
+                  اسْتَخْلَفَ الَّذِيْنَ مِنْ قَبْلِهِمْۖ وَلَيُمَكِّنَنَّ
+                  لَهُمْ دِيْنَهُمُ الَّذِى ارْتَضٰى لَهُمْ
+                  وَلَيُبَدِّلَنَّهُمْ مِّنْۢ بَعْدِ خَوْفِهِمْ اَمْنًاۗ
+                  يَعْبُدُوْنَنِيْ لَا يُشْرِكُوْنَ بِيْ شَيْـًٔاۗ وَمَنْ
+                  كَفَرَ
+                </p>
+              </div>
             </div>
 
             <!-- Widget jadwal sholat: geser otomatis tiap ±3 detik, atau geser
-                 manual lewat tombol panah / titik / swipe. Lihat js/prayer.js -->
+               manual lewat tombol panah / titik / swipe. Lihat js/prayer.js
+               Ditaruh sebagai elemen terpisah (bukan di dalam .about-text) supaya
+               di mode desktop bisa diposisikan tepat di bawah gambar simbol
+               syahadat lewat CSS grid, tanpa mengubah urutan/posisi di mode
+               mobile & tablet (lihat aturan @media di style.css). -->
             <div class="prayer-widget" id="prayerWidget">
               <div class="prayer-widget-head">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
                 <div>
                   <strong>Jadwal Sholat</strong>
                   <span>Jakarta Timur &amp; sekitarnya</span>
@@ -62,16 +139,42 @@
               </div>
 
               <div class="prayer-carousel">
-                <button type="button" class="prayer-nav prayer-nav-prev" aria-label="Waktu sebelumnya">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                <button
+                  type="button"
+                  class="prayer-nav prayer-nav-prev"
+                  aria-label="Waktu sebelumnya"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="15 18 9 12 15 6" />
+                  </svg>
                 </button>
                 <div class="prayer-track-wrap">
                   <div class="prayer-track" id="prayerTrack">
                     <!-- slide waktu sholat dirender otomatis lewat js/prayer.js -->
                   </div>
                 </div>
-                <button type="button" class="prayer-nav prayer-nav-next" aria-label="Waktu selanjutnya">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                <button
+                  type="button"
+                  class="prayer-nav prayer-nav-next"
+                  aria-label="Waktu selanjutnya"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
                 </button>
               </div>
 
@@ -79,152 +182,270 @@
               <p class="prayer-date" id="prayerDate"></p>
               <p class="prayer-note" id="prayerNote"></p>
             </div>
-          </div>
 
-          <div class="about-symbol-wrap">
-            <!-- ==========================================================
-                 GANTI SIMBOL MUHAMMAD DI SINI
+            <div class="about-symbol-wrap">
+              <!-- ==========================================================
+                 GANTI SIMBOL syahadat DI SINI
                  1) Simpan file gambar (berwarna kuning/emas) ke folder images/
-                    dengan nama: muhammad-symbol.jpeg
+                    dengan nama: syahadat-symbol.jpeg
                  2) Disarankan latar transparan, rasio persegi
-                 3) Jika nama file berbeda, ubah "images/muhammad-symbol.jpeg"
+                 3) Jika nama file berbeda, ubah "images/syahadat-symbol.jpeg"
                     di bawah ini
                  Selama file belum ada, placeholder bulat akan tampil otomatis.
             ========================================================== -->
-            <img src="images/syahadat-symbol.png" alt="Simbol kaligrafi Syahadat" class="about-symbol" onerror="imgFallback(this, 'Simbol Muhammad ﷺ')">
+              <img
+                src="images/syahadat-symbol.png"
+                alt="Simbol kaligrafi Syahadat"
+                class="about-symbol"
+                onerror="imgFallback(this, 'Simbol Muhammad ﷺ')"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ======================= KHUTBAH (PREVIEW) ======================= -->
-    <section id="khutbah" class="section section-alt reveal">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-head-text">
-            <h2 class="section-title">Naskah Khutbah</h2>
-            <p class="section-desc">Kumpulan naskah khutbah Jumat, Idul Fitri, dan Gerhana yang disusun oleh ulama dan da'i dari berbagai latar belakang, siap dipakai oleh khatib di mana pun berada.</p>
-          </div>
-        </div>
-
-        <div class="card-grid" id="khutbahPreviewGrid">
-          <!-- 4 kartu dirender otomatis lewat js/home.js dari js/data.js -->
-        </div>
-
-        <div class="view-more-row">
-          <a href="khutbah.html" class="view-more-link">
-            Lihat Semua Khutbah
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================= BUKU (PREVIEW) ======================= -->
-    <section id="buku" class="section reveal">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-head-text">
-            <h2 class="section-title">Referensi Buku</h2>
-            <p class="section-desc">Koleksi buku keislaman mulai dari fiqih, akidah, akhlak, hingga sirah nabawiyah — bekal tambahan bagi khatib, da'i, dan umat secara umum.</p>
-          </div>
-        </div>
-
-        <div class="card-grid" id="bukuPreviewGrid">
-          <!-- 4 kartu dirender otomatis lewat js/home.js dari js/data.js -->
-        </div>
-
-        <div class="view-more-row">
-          <a href="buku.html" class="view-more-link">
-            Lihat Semua Buku
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================= OPINI (SARAN / KRITIK / PERTANYAAN) ======================= -->
-    <section id="opini" class="section section-alt reveal">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-head-text">
-            <h2 class="section-title">Opini, Saran &amp; Pertanyaan</h2>
-            <p class="section-desc">Punya masukan untuk pengembangan situs ini, ingin menyampaikan kritik, atau ada pertanyaan lain? Sampaikan lewat formulir berikut.</p>
-          </div>
-        </div>
-
-        <div class="opini-grid">
-          <div class="opini-side">
-            <div class="opini-points">
-              <div class="opini-point">
-                <div class="opini-point-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                </div>
-                <div>
-                  <h4>Saran &amp; kritik</h4>
-                  <p>Bantu kami menyempurnakan tampilan maupun kelengkapan naskah yang tersedia di situs ini.</p>
-                </div>
-              </div>
-              <div class="opini-point">
-                <div class="opini-point-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"/></svg>
-                </div>
-                <div>
-                  <h4>Pertanyaan umum</h4>
-                  <p>Tanyakan hal-hal seputar naskah khutbah, koleksi buku, maupun kerja sama dengan kami.</p>
-                </div>
-              </div>
-              <div class="opini-point">
-                <div class="opini-point-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
-                </div>
-                <div>
-                  <h4>Data Anda terjaga</h4>
-                  <p>Nama dan email hanya kami gunakan untuk menindaklanjuti pesan yang Anda kirimkan.</p>
-                </div>
-              </div>
+      <!-- ======================= KHUTBAH (PREVIEW) ======================= -->
+      <section id="khutbah" class="section section-alt reveal">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-head-text">
+              <h2 class="section-title">Naskah Khutbah</h2>
+              <p class="section-desc">
+                Kumpulan naskah khutbah Jumat, Idul Fitri, dan Gerhana yang
+                disusun oleh ulama dan da'i dari berbagai latar belakang, siap
+                dipakai oleh khatib di mana pun berada.
+              </p>
             </div>
           </div>
 
-          <form class="opini-form" id="opiniForm" novalidate>
-            <div class="form-success" id="opiniSuccess">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span>Terima kasih, masukan Anda telah kami terima dan akan segera kami tindaklanjuti.</span>
+          <div class="card-grid" id="khutbahPreviewGrid">
+            <!-- 4 kartu dirender otomatis lewat js/home.js dari js/data.js -->
+          </div>
+
+          <div class="view-more-row">
+            <a href="khutbah.html" class="view-more-link">
+              Lihat Semua Khutbah
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="9 6 15 12 9 18" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= BUKU (PREVIEW) ======================= -->
+      <section id="buku" class="section reveal">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-head-text">
+              <h2 class="section-title">Referensi Buku</h2>
+              <p class="section-desc">
+                Koleksi buku keislaman mulai dari fiqih, akidah, akhlak, hingga
+                sirah nabawiyah — bekal tambahan bagi khatib, da'i, dan umat
+                secara umum.
+              </p>
+            </div>
+          </div>
+
+          <div class="card-grid" id="bukuPreviewGrid">
+            <!-- 4 kartu dirender otomatis lewat js/home.js dari js/data.js -->
+          </div>
+
+          <div class="view-more-row">
+            <a href="buku.html" class="view-more-link">
+              Lihat Semua Buku
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="9 6 15 12 9 18" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= OPINI (SARAN / KRITIK / PERTANYAAN) ======================= -->
+      <section id="opini" class="section section-alt reveal">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-head-text">
+              <h2 class="section-title">Opini, Saran &amp; Pertanyaan</h2>
+              <p class="section-desc">
+                Punya masukan untuk pengembangan situs ini, ingin menyampaikan
+                kritik, atau ada pertanyaan lain? Sampaikan lewat formulir
+                berikut.
+              </p>
+            </div>
+          </div>
+
+          <div class="opini-grid">
+            <div class="opini-side">
+              <div class="opini-points">
+                <div class="opini-point">
+                  <div class="opini-point-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4>Saran &amp; kritik</h4>
+                    <p>
+                      Bantu kami menyempurnakan tampilan maupun kelengkapan
+                      naskah yang tersedia di situs ini.
+                    </p>
+                  </div>
+                </div>
+                <div class="opini-point">
+                  <div class="opini-point-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+                      <path
+                        d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4>Pertanyaan umum</h4>
+                    <p>
+                      Tanyakan hal-hal seputar naskah khutbah, koleksi buku,
+                      maupun kerja sama dengan kami.
+                    </p>
+                  </div>
+                </div>
+                <div class="opini-point">
+                  <div class="opini-point-icon">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4>Data Anda terjaga</h4>
+                    <p>
+                      Nama dan email hanya kami gunakan untuk menindaklanjuti
+                      pesan yang Anda kirimkan.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="form-row">
+            <form class="opini-form" id="opiniForm" novalidate>
+              <div class="form-success" id="opiniSuccess">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                <span
+                  >Terima kasih, masukan Anda telah kami terima dan akan segera
+                  kami tindaklanjuti.</span
+                >
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="opiniName">Nama Lengkap</label>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="opiniName"
+                    name="name"
+                    placeholder="Nama Anda"
+                    autocomplete="name"
+                    required
+                  />
+                  <span class="form-error">Mohon isi nama Anda.</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="opiniEmail"
+                    >Alamat Email</label
+                  >
+                  <input
+                    class="form-input"
+                    type="email"
+                    id="opiniEmail"
+                    name="email"
+                    placeholder="nama@email.com"
+                    autocomplete="email"
+                    required
+                  />
+                  <span class="form-error"
+                    >Mohon isi email dengan format yang benar.</span
+                  >
+                </div>
+              </div>
+
               <div class="form-group">
-                <label class="form-label" for="opiniName">Nama Lengkap</label>
-                <input class="form-input" type="text" id="opiniName" name="name" placeholder="Nama Anda" autocomplete="name" required>
-                <span class="form-error">Mohon isi nama Anda.</span>
+                <label class="form-label" for="opiniMessage">Pesan</label>
+                <textarea
+                  class="form-textarea"
+                  id="opiniMessage"
+                  name="message"
+                  placeholder="Tuliskan saran, kritik, atau pertanyaan Anda di sini..."
+                  required
+                ></textarea>
+                <span class="form-error"
+                  >Mohon tuliskan pesan minimal 10 karakter.</span
+                >
               </div>
-              <div class="form-group">
-                <label class="form-label" for="opiniEmail">Alamat Email</label>
-                <input class="form-input" type="email" id="opiniEmail" name="email" placeholder="nama@email.com" autocomplete="email" required>
-                <span class="form-error">Mohon isi email dengan format yang benar.</span>
-              </div>
-            </div>
 
-            <div class="form-group">
-              <label class="form-label" for="opiniMessage">Pesan</label>
-              <textarea class="form-textarea" id="opiniMessage" name="message" placeholder="Tuliskan saran, kritik, atau pertanyaan Anda di sini..." required></textarea>
-              <span class="form-error">Mohon tuliskan pesan minimal 10 karakter.</span>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-block">Kirim Pesan</button>
-          </form>
+              <button type="submit" class="btn btn-primary btn-block">
+                Kirim Pesan
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <!-- Footer dirender otomatis lewat js/components.js -->
-  <footer class="site-footer reveal" id="site-footer"></footer>
+    <!-- Footer dirender otomatis lewat js/components.js -->
+    <footer class="site-footer reveal" id="site-footer"></footer>
 
-  <script src="js/data.js"></script>
-  <script src="js/components.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/home.js"></script>
-  <script src="js/prayer.js"></script>
-</body>
+    <script src="js/data.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/prayer.js"></script>
+  </body>
 </html>

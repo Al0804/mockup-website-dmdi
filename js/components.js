@@ -13,7 +13,7 @@
 const SITE_CONFIG = {
   orgName: "Dewan Masjid Digital Indonesia",
   orgShort: "DMDI",
-  tagline: "Bank Naskah Khutbah & Referensi Islami",
+  tagline: "خادم الأمة والدعاة",
   aboutText: "Seruan Masjid adalah wadah kolaborasi keilmuan Islam. Kami mengumpulkan dan menyediakan bank data naskah khutbah Jumat, Idul Fitri, dan Gerhana, yang disusun oleh ulama dan da'i dari berbagai latar belakang bahasa, menjadi jembatan antara keilmuan Islam dan praktik dakwah di lapangan.",
   whatsappNumber: "6283852081945",
   whatsappMessage: "Assalamu'alaikum, saya ingin bertanya lebih lanjut mengenai Dewan Masjid Digital Indonesia.",

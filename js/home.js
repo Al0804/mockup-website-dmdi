@@ -29,10 +29,14 @@ function buildPreviewCard(item, type) {
   const icon = type === "khutbah" ? Icons.scroll : Icons.book;
   const detailPage = type === "khutbah" ? "khutbah-detail.html" : "buku-detail.html";
   const metaExtra = type === "khutbah" ? item.language : item.pages;
+  const thumb = item.image
+    ? '<div class="card-thumb"><img src="' + item.image + '" alt="' + item.title + '" loading="lazy"></div>'
+    : '';
 
   return (
     '<article class="content-card content-card--' + type + '" data-id="' + item.id + '">' +
-      '<div class="card-icon">' + icon + '</div>' +
+      thumb +
+      (thumb ? '' : '<div class="card-icon">' + icon + '</div>') +
       '<span class="card-category">' + item.category + '</span>' +
       '<h3 class="card-title">' + item.title + '</h3>' +
       '<div class="card-meta"><span>' + item.author + '</span><span>' + metaExtra + '</span></div>' +
