@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Terapkan mode terang/gelap sedini mungkin agar halaman tidak "berkedip" -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("dmdi-theme");
+        if (!t) {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
   <title>Naskah Khutbah — Dewan Masjid Digital Indonesia</title>
   <meta name="description" content="Jelajahi seluruh naskah khutbah Jumat, Idul Fitri, dan Gerhana dari Dewan Masjid Digital Indonesia. Cari berdasarkan judul, penulis, atau kategori.">
   <link rel="icon" href="images/logo.png" type="image/png">
@@ -20,6 +32,7 @@
 
   <main id="main-content">
     <div class="page-banner">
+      <div class="masjid-motif" aria-hidden="true"></div>
       <div class="container">
         <div class="breadcrumb">
           <a href="index.html">Beranda</a>
@@ -42,7 +55,7 @@
         </form>
 
         <div class="filter-row" id="filterRow">
-          <!-- chip kategori dirender otomatis lewat js/listing.js -->
+          <!-- menu filter (Bahasa / Tgl Upload / Abjad) dirender otomatis lewat js/listing.js -->
         </div>
       </div>
     </div>
@@ -72,11 +85,14 @@
   <script src="js/components.js"></script>
   <script src="js/main.js"></script>
   <script src="js/listing.js"></script>
+  <script src="js/theme.js"></script>
   <script>
     document.addEventListener("components:ready", function () {
       initListingPage({
         data: KHUTBAH_DATA,
         categories: KHUTBAH_CATEGORIES,
+        languages: KHUTBAH_LANGUAGES,
+        months: KHUTBAH_MONTHS,
         type: "khutbah",
         detailPage: "khutbah-detail.html",
         noun: "naskah khutbah"

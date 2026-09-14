@@ -17,10 +17,15 @@ function renderHomePreview() {
     initCardTouchToggle(khutbahGrid);
   }
   if (bukuGrid) {
-    bukuGrid.innerHTML = BUKU_DATA.slice(0, 4).map(function (item) {
-      return buildPreviewCard(item, "buku");
-    }).join("");
-    initCardTouchToggle(bukuGrid);
+    bukuGrid.innerHTML = '<p class="listing-loading">Memuat buku islami dari koleksi online...</p>';
+    if (typeof loadBukuData === "function") {
+      loadBukuData().then(function (data) {
+        bukuGrid.innerHTML = data.slice(0, 4).map(function (item) {
+          return buildPreviewCard(item, "buku");
+        }).join("");
+        initCardTouchToggle(bukuGrid);
+      });
+    }
   }
 }
 

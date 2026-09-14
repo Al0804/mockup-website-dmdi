@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Terapkan mode terang/gelap sedini mungkin agar halaman tidak "berkedip" -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("dmdi-theme");
+        if (!t) {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
   <title>Referensi Buku — Dewan Masjid Digital Indonesia</title>
   <meta name="description" content="Jelajahi koleksi buku keislaman dari Dewan Masjid Digital Indonesia mulai dari fiqih, akidah, akhlak, hingga sirah nabawiyah. Cari berdasarkan judul, penulis, atau kategori.">
   <link rel="icon" href="images/logo.png" type="image/png">
@@ -20,6 +32,7 @@
 
   <main id="main-content">
     <div class="page-banner">
+      <div class="masjid-motif" aria-hidden="true"></div>
       <div class="container">
         <div class="breadcrumb">
           <a href="index.html">Beranda</a>
@@ -69,17 +82,24 @@
   <footer class="site-footer reveal" id="site-footer"></footer>
 
   <script src="js/data.js"></script>
+  <script src="js/buku-api.js"></script>
   <script src="js/components.js"></script>
   <script src="js/main.js"></script>
   <script src="js/listing.js"></script>
+  <script src="js/theme.js"></script>
   <script>
     document.addEventListener("components:ready", function () {
-      initListingPage({
-        data: BUKU_DATA,
-        categories: BUKU_CATEGORIES,
-        type: "buku",
-        detailPage: "buku-detail.html",
-        noun: "buku"
+      const grid = document.getElementById("listingGrid");
+      if (grid) grid.innerHTML = '<p class="listing-loading">Memuat koleksi buku islami dari sumber online...</p>';
+
+      loadBukuData().then(function (data) {
+        initListingPage({
+          data: data,
+          categories: BUKU_CATEGORIES,
+          type: "buku",
+          detailPage: "buku-detail.html",
+          noun: "buku"
+        });
       });
     });
   </script>

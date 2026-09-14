@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Terapkan mode terang/gelap sedini mungkin agar halaman tidak "berkedip" -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("dmdi-theme");
+        if (!t) {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
   <title>Buku — Dewan Masjid Digital Indonesia</title>
   <meta name="description" content="Baca ulasan lengkap buku dari koleksi Dewan Masjid Digital Indonesia.">
   <link rel="icon" href="images/logo.png" type="image/png">
@@ -19,7 +31,6 @@
   <header class="site-header" id="site-header"></header>
 
   <main id="main-content">
-
     <!-- ======================= TIDAK DITEMUKAN ======================= -->
     <div class="empty-state" id="notFound" style="display:none; padding-block:96px;">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
@@ -31,6 +42,7 @@
     <!-- ======================= ARTIKEL ======================= -->
     <div id="articleWrap">
       <div class="detail-hero">
+        <div class="masjid-motif" aria-hidden="true"></div>
         <div class="container">
           <a href="buku.html" class="back-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
@@ -60,9 +72,26 @@
       <div class="detail-body-wrap reveal">
         <div class="container">
           <div class="detail-layout">
-            <article class="detail-article" id="articleBody">
-              <!-- isi ulasan buku dimuat otomatis lewat js/detail.js -->
-            </article>
+            <div class="detail-main">
+              <article class="detail-article" id="articleBody">
+                <!-- sinopsis buku dimuat otomatis lewat js/detail.js -->
+              </article>
+
+              <div class="khutbah-actions">
+                <a href="#" id="previewBtn" target="_blank" rel="noopener" class="btn btn-outline" style="display:none">
+                  <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  Baca Pratinjau
+                </a>
+                <a href="#" id="downloadBtn" class="btn btn-primary">
+                  <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  <span id="downloadBtnLabel">Unduh Ringkasan</span>
+                </a>
+                <button type="button" id="printBtn" class="btn btn-outline">
+                  <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                  Cetak
+                </button>
+              </div>
+            </div>
 
             <aside class="detail-side">
               <div class="side-box">
@@ -102,17 +131,22 @@
   <footer class="site-footer reveal" id="site-footer"></footer>
 
   <script src="js/data.js"></script>
+  <script src="js/buku-api.js"></script>
   <script src="js/components.js"></script>
   <script src="js/main.js"></script>
   <script src="js/listing.js"></script>
   <script src="js/detail.js"></script>
+  <script src="js/theme.js"></script>
   <script>
     document.addEventListener("components:ready", function () {
       document.getElementById("sideWhatsapp").href = waLink();
-      initDetailPage({
-        data: BUKU_DATA,
-        type: "buku",
-        detailPage: "buku-detail.html"
+
+      loadBukuData().then(function (data) {
+        initDetailPage({
+          data: data,
+          type: "buku",
+          detailPage: "buku-detail.html"
+        });
       });
     });
   </script>

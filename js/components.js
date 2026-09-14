@@ -18,6 +18,8 @@ const SITE_CONFIG = {
   whatsappNumber: "6283852081945",
   whatsappMessage: "Assalamu'alaikum, saya ingin bertanya lebih lanjut mengenai Dewan Masjid Digital Indonesia.",
   email: "naskahkhutbahjumatdmdi@gmail.com",
+  instagramHandle: "@dmdi.id",
+  instagramUrl: "https://www.instagram.com/dmdi.id",
   address: "Gg. Lurah No.01, RT.01/RW.11, Ciputat, Kec. Ciputat, Kota Tangerang Selatan, Banten 15114",
   year: "2026"
 };
@@ -49,7 +51,9 @@ const Icons = {
   seal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M12 6.5 13.6 10 17.5 10.4 14.6 13 15.5 16.8 12 14.7 8.5 16.8 9.4 13 6.5 10.4 10.4 10Z"/></svg>',
   share: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="10.5" x2="15.4" y2="6.5"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/></svg>',
   copy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>',
-  inbox: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"/></svg>'
+  inbox: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"/></svg>',
+  instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
+  chevronDown: '<svg class="icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>'
 };
 
 /* Placeholder gambar: dipanggil lewat atribut onerror pada <img>
@@ -86,6 +90,26 @@ function navHref(page, target) {
   return prefix + "#" + target;
 }
 
+/* ---------- DROPDOWN "INFO LEBIH LANJUT" ----------
+   Menampilkan pilihan kontak (Instagram, WhatsApp, Email) saat tombol
+   "Info Lebih Lanjut" diklik/disentuh. extraClass membedakan versi
+   desktop (header-wa) dan versi mobile (mobile-wa) supaya aturan CSS
+   responsif yang sudah ada tetap berfungsi. */
+function renderInfoDropdown(extraClass) {
+  return (
+    '<div class="info-dropdown">' +
+      '<button type="button" class="btn btn-whatsapp ' + extraClass + ' info-dropdown-toggle" aria-haspopup="true" aria-expanded="false">' +
+        Icons.whatsapp + ' Info Lebih Lanjut ' + Icons.chevronDown +
+      '</button>' +
+      '<div class="info-dropdown-menu" role="menu">' +
+        '<a href="' + SITE_CONFIG.instagramUrl + '" target="_blank" rel="noopener" role="menuitem">' + Icons.instagram + ' Instagram</a>' +
+        '<a href="' + waLink() + '" target="_blank" rel="noopener" role="menuitem">' + Icons.whatsapp + ' WhatsApp</a>' +
+        '<a href="mailto:' + SITE_CONFIG.email + '" role="menuitem">' + Icons.mail + ' Email</a>' +
+      '</div>' +
+    '</div>'
+  );
+}
+
 /* ---------- HEADER ---------- */
 function renderHeader(page) {
   const khutbahActive = (page === "khutbah" || page === "khutbah-detail") ? " is-active" : "";
@@ -113,11 +137,11 @@ function renderHeader(page) {
           '<li><a href="' + navHref(page, "buku") + '" class="nav-link' + bukuActive + '" data-nav="buku">Buku</a></li>' +
           '<li><a href="' + navHref(page, "opini") + '" class="nav-link" data-nav="opini">Opini</a></li>' +
         '</ul>' +
-        '<a href="' + waLink() + '" target="_blank" rel="noopener" class="btn btn-whatsapp mobile-wa">' + Icons.whatsapp + ' Info Lebih Lanjut</a>' +
+        renderInfoDropdown('mobile-wa') +
       '</nav>' +
 
       '<div class="header-actions">' +
-        '<a href="' + waLink() + '" target="_blank" rel="noopener" class="btn btn-whatsapp header-wa">' + Icons.whatsapp + ' Info Lebih Lanjut</a>' +
+        renderInfoDropdown('header-wa') +
         '<button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navbar" aria-label="Buka menu navigasi">' +
           Icons.menu + Icons.close +
         '</button>' +
@@ -155,6 +179,7 @@ function renderFooter() {
           '<div class="contact-list">' +
             '<div class="contact-item">' + Icons.whatsapp + '<a href="' + waLink() + '" target="_blank" rel="noopener">WA: ' + formatPhone(SITE_CONFIG.whatsappNumber) + '</a></div>' +
             '<div class="contact-item">' + Icons.mail + '<a href="mailto:' + SITE_CONFIG.email + '">' + SITE_CONFIG.email + '</a></div>' +
+            '<div class="contact-item">' + Icons.instagram + '<a href="' + SITE_CONFIG.instagramUrl + '" target="_blank" rel="noopener">' + SITE_CONFIG.instagramHandle + '</a></div>' +
             '<div class="contact-item">' + Icons.mapPin + '<span>' + SITE_CONFIG.address + '</span></div>' +
           '</div>' +
           '<!-- Peta memakai Google Maps embed berdasarkan alamat di atas. Untuk koordinat pasti, ganti mapSrc di js/components.js dengan link "Sematkan peta" dari Google Maps. -->' +
@@ -178,6 +203,40 @@ function formatPhone(num) {
   const local = "0" + num.slice(2);
   return local.replace(/(\d{4})(\d{4})(\d+)/, "$1-$2-$3");
 }
+
+/* ---------- INTERAKSI DROPDOWN "INFO LEBIH LANJUT" ----------
+   Dipasang sekali di sini (bukan lewat DOMContentLoaded) memakai event
+   delegation di document, supaya tetap berfungsi walau header baru
+   dirender belakangan oleh renderHeader() di atas. */
+function closeAllInfoDropdowns() {
+  document.querySelectorAll(".info-dropdown.is-open").forEach(function (d) {
+    d.classList.remove("is-open");
+    const toggle = d.querySelector(".info-dropdown-toggle");
+    if (toggle) toggle.setAttribute("aria-expanded", "false");
+  });
+}
+
+document.addEventListener("click", function (e) {
+  const toggle = e.target.closest(".info-dropdown-toggle");
+  if (toggle) {
+    e.preventDefault();
+    const dropdown = toggle.closest(".info-dropdown");
+    const willOpen = !dropdown.classList.contains("is-open");
+    closeAllInfoDropdowns();
+    if (willOpen) {
+      dropdown.classList.add("is-open");
+      toggle.setAttribute("aria-expanded", "true");
+    }
+    return;
+  }
+  if (!e.target.closest(".info-dropdown-menu")) {
+    closeAllInfoDropdowns();
+  }
+});
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") closeAllInfoDropdowns();
+});
 
 /* ---------- PEMASANGAN HEADER & FOOTER KE SETIAP HALAMAN ---------- */
 document.addEventListener("DOMContentLoaded", function () {

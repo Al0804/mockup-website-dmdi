@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Terapkan mode terang/gelap sedini mungkin agar halaman tidak "berkedip" -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("dmdi-theme");
+        if (!t) {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
   <title>Naskah Khutbah — Dewan Masjid Digital Indonesia</title>
   <meta name="description" content="Baca naskah khutbah lengkap dari Dewan Masjid Digital Indonesia.">
   <link rel="icon" href="images/logo.png" type="image/png">
@@ -19,7 +31,6 @@
   <header class="site-header" id="site-header"></header>
 
   <main id="main-content">
-
     <!-- ======================= TIDAK DITEMUKAN ======================= -->
     <div class="empty-state" id="notFound" style="display:none; padding-block:96px;">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"/><path d="M7 3a2 2 0 0 0-2 2v13.5A1.5 1.5 0 0 0 6.5 20H19a2 2 0 0 1-2-2v-1H7"/></svg>
@@ -31,6 +42,7 @@
     <!-- ======================= ARTIKEL ======================= -->
     <div id="articleWrap">
       <div class="detail-hero">
+        <div class="masjid-motif" aria-hidden="true"></div>
         <div class="container">
           <a href="khutbah.html" class="back-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
@@ -119,6 +131,7 @@
   <script src="js/main.js"></script>
   <script src="js/listing.js"></script>
   <script src="js/detail.js"></script>
+  <script src="js/theme.js"></script>
   <script>
     document.addEventListener("components:ready", function () {
       document.getElementById("sideWhatsapp").href = waLink();

@@ -10,6 +10,34 @@
 
 const KHUTBAH_CATEGORIES = ["Semua", "Khutbah Jumat", "Khutbah Idul Fitri", "Khutbah Gerhana"];
 
+/* Daftar bahasa yang bisa dipilih pada filter "Berdasarkan Bahasa" di
+   halaman Khutbah. Daftar ini sengaja memuat bahasa yang belum tentu
+   ada naskahnya saat ini — kalau dipilih dan belum ada naskahnya,
+   halaman akan menampilkan status "naskah tidak ditemukan" seperti
+   biasa. Tambahkan field `language` pada data khutbah baru dengan
+   salah satu nilai persis di bawah ini agar filter berfungsi. */
+const KHUTBAH_LANGUAGES = [
+  "Bahasa Indonesia",
+  "Bahasa Arab",
+  "Bahasa Jawa",
+  "Bahasa Lampung",
+  "Bahasa Bajo",
+  "Bahasa Mandar",
+  "Bahasa Mbojo-Dompu",
+  "Bahasa Inggris",
+  "Bahasa Bugis",
+  "Bahasa Sunda",
+  "Bahasa Makassar",
+  "Bahasa Madura",
+  "Bahasa Aceh",
+  "Bahasa Minang"
+];
+
+/* Daftar bulan (format singkat) sesuai penulisan tanggal pada field
+   `date` naskah khutbah, mis. "28 Agu 2026". Dipakai untuk membangun
+   pilihan "Bulan" pada filter "Berdasarkan Tgl Upload". */
+const KHUTBAH_MONTHS = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+
 const BUKU_CATEGORIES = ["Semua", "Fiqih", "Aqidah", "Akhlak & Adab", "Sirah Nabawiyah", "Tafsir", "Hadits", "Dakwah"];
 
 const KHUTBAH_DATA = [
@@ -271,7 +299,12 @@ const KHUTBAH_DATA = [
   }
 ];
 
-const BUKU_DATA = [
+/* BUKU_FALLBACK_DATA: contoh data cadangan, dipakai HANYA kalau
+   Google Books API tidak bisa diakses (mis. situs dibuka tanpa
+   koneksi internet). Dalam kondisi normal, data buku yang tampil
+   di halaman diambil langsung dari API oleh js/buku-api.js — lihat
+   file tersebut untuk penjelasan lengkap. */
+const BUKU_FALLBACK_DATA = [
   {
     id: 1,
     title: "Fiqih Ibadah Sehari-hari",
@@ -559,5 +592,5 @@ function getKhutbahById(id) {
   return KHUTBAH_DATA.find(function (item) { return String(item.id) === String(id); });
 }
 function getBukuById(id) {
-  return BUKU_DATA.find(function (item) { return String(item.id) === String(id); });
+  return BUKU_FALLBACK_DATA.find(function (item) { return String(item.id) === String(id); });
 }
