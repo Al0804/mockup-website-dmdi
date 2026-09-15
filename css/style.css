@@ -100,8 +100,7 @@ a { text-decoration: none; color: inherit; }
 /* ---------- 2b. MODE GELAP (dark mode) ----------
    Diaktifkan lewat atribut data-theme="dark" di elemen <html>,
    diatur oleh js/theme.js & tombol saklar terang/gelap.
-   Footer sengaja TIDAK ikut berubah (lihat bagian FOOTER, warnanya
-   sudah ditulis tetap/hardcode dari awal). */
+    */
 [data-theme="dark"] {
   --paper: #111C16;
   --paper-warm: #16221C;
@@ -564,13 +563,7 @@ textarea:focus-visible,
 }
 
 /* ---------- 7b. MOTIF SKETSA MASJID + LAMPU LEBARAN ----------
-   SATU strip dekoratif (lampu lebaran, bulan-bintang, beberapa masjid)
-   yang diulang terus-menerus dari atas sampai bawah halaman lewat CSS
-   mask-repeat, ditempel di sisi kanan. Karena hanya satu elemen yang
-   membentang penuh sepanjang <main>/section pembungkus, motifnya terasa
-   menyatu dari halaman Tentang Kami sampai Opini — bukan potongan
-   ikon kecil terpisah per-section. Warnanya otomatis mengikuti tema
-   terang/gelap, dan di mode gelap motifnya "menyala" keemasan. */
+   */
 .masjid-motif {
   position: absolute;
   inset: 0;

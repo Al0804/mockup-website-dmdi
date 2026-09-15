@@ -1,11 +1,6 @@
 /* =============================================================
    SAKLAR MODE TERANG / GELAP
-   - Preferensi disimpan di localStorage (bertahan antar kunjungan).
-   - Tombol ditambahkan otomatis (mengambang di kanan-bawah) di semua
-     halaman, tidak bergantung pada isi header yang dirender dinamis
-     lewat js/components.js.
-   - Warna & motif sketsa masjid mengikuti data-theme lewat CSS
-     (lihat css/style.css bagian "MODE GELAP" & "MOTIF SKETSA MASJID").
+   
    ============================================================= */
 (function () {
   var STORAGE_KEY = "dmdi-theme";

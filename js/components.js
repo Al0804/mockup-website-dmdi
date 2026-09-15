@@ -7,9 +7,7 @@
    ============================================================= */
 
 /* ---------- KONFIGURASI SITUS ----------
-   Ganti nilai-nilai di bawah ini sesuai data organisasi Anda.
-   Nomor WA & email di bawah memakai kontak publik yang sudah
-   tercantum di situs Seruanmasjid.com — silakan sesuaikan. */
+   Berisikan mengenai informasi untuk bagian header dan footer. */
 const SITE_CONFIG = {
   orgName: "Dewan Masjid Digital Indonesia",
   orgShort: "DMDI",

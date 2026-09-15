@@ -6,41 +6,7 @@
    (https://openlibrary.org/search.json), agar sampul buku,
    penulis, dan tahun terbit selalu nyata — bukan rekayasa.
 
-   KENAPA GANTI DARI GOOGLE BOOKS:
-   Google Books sekarang mewajibkan API key untuk hampir semua
-   permintaan (tanpa key langsung kena error 429), yang berarti
-   perlu bikin akun Google Cloud dulu sebelum bisa jalan sama
-   sekali — kurang cocok untuk situs yang masih di-test lokal dan
-   belum di-hosting. Open Library dipakai sebagai gantinya karena:
-     - TIDAK perlu API key / akun sama sekali.
-     - TIDAK ada pembatasan domain — jalan sama persis di
-       127.0.0.1/Live Server maupun setelah nanti di-hosting.
-     - Endpoint /search.json sudah lama dipakai publik dari
-       browser (CORS diizinkan) dan datanya asli dari katalog
-       buku sungguhan, termasuk sejumlah judul Islami berbahasa
-       Indonesia.
-     - Sampul buku (covers.openlibrary.org) dimuat lewat tag
-       <img> biasa, jadi selalu tampil terlepas dari isu CORS
-       apa pun pada endpoint JSON-nya.
-
-   Catatan jujur soal keterbatasan: dibanding Google Books,
-   katalog Open Library untuk buku Islami terbitan Indonesia
-   tidak selengkap itu, dan endpoint pencarian tidak selalu
-   menyertakan sinopsis panjang (hanya cuplikan kalimat pertama
-   kalau tersedia). Karena itu:
-     - Buku yang TIDAK punya sampul otomatis disaring, supaya
-       kartu buku tidak pernah tampil tanpa foto.
-     - Setiap kategori dicari dengan kata kunci Bahasa Indonesia
-       dulu; kalau hasilnya (yang punya sampul) masih sedikit,
-       baru ditambah kata kunci topik Islami yang lebih umum
-       supaya jumlah buku bersampul tetap memadai.
-     - Tombol "Baca Pratinjau" membuka halaman buku tsb di Open
-       Library (kadang tersedia baca via Internet Archive).
-     - Tombol "Unduh" mengarah ke halaman baca/unduh resmi di
-       Archive.org HANYA jika Open Library menandainya sebagai
-       akses publik. Jika tidak, tombol otomatis mengunduh
-       ringkasan (.txt) berisi info buku — sama seperti mekanisme
-       cadangan pada naskah khutbah.
+  
    ============================================================= */
 
 const BUKU_API_QUERIES = [
