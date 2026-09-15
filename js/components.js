@@ -205,9 +205,21 @@ function formatPhone(num) {
 }
 
 /* ---------- INTERAKSI DROPDOWN "INFO LEBIH LANJUT" ----------
-   Dipasang sekali di sini (bukan lewat DOMContentLoaded) memakai event
-   delegation di document, supaya tetap berfungsi walau header baru
-   dirender belakangan oleh renderHeader() di atas. */
+   Dipasang di sini (bukan lewat DOMContentLoaded) memakai event delegation
+   di document, supaya tetap berfungsi walau header baru dirender belakangan
+   oleh renderHeader() di atas.
+
+   CATATAN PENTING (perbaikan bug mobile/tablet):
+   Panel nav hamburger punya listener sendiri di js/main.js yang menutup menu
+   begitu ada klik di dalam navbar atau di luar panel. Karena tombol + isi
+   dropdown ini berada DI DALAM navbar, dulu sekali disentuh menunya keburu
+   tertutup sebelum pilihan Instagram/WhatsApp/Email sempat dipakai.
+
+   Solusinya: seluruh klik di area .info-dropdown ditangani pada fase CAPTURE
+   di document — fase ini berjalan lebih dulu daripada listener penutup nav —
+   lalu stopPropagation() supaya listener penutup itu tidak pernah menerima
+   event-nya. Navigasi <a> tetap jalan normal karena stopPropagation hanya
+   menghentikan listener, bukan aksi bawaan link. */
 function closeAllInfoDropdowns() {
   document.querySelectorAll(".info-dropdown.is-open").forEach(function (d) {
     d.classList.remove("is-open");
@@ -217,26 +229,45 @@ function closeAllInfoDropdowns() {
 }
 
 document.addEventListener("click", function (e) {
-  const toggle = e.target.closest(".info-dropdown-toggle");
-  if (toggle) {
-    e.preventDefault();
-    const dropdown = toggle.closest(".info-dropdown");
-    const willOpen = !dropdown.classList.contains("is-open");
-    closeAllInfoDropdowns();
-    if (willOpen) {
-      dropdown.classList.add("is-open");
-      toggle.setAttribute("aria-expanded", "true");
+  const inDropdown = e.target.closest(".info-dropdown");
+
+  if (inDropdown) {
+    // Jangan biarkan klik ini menutup panel nav hamburger.
+    e.stopPropagation();
+
+    const toggle = e.target.closest(".info-dropdown-toggle");
+    if (toggle) {
+      e.preventDefault();
+      const willOpen = !inDropdown.classList.contains("is-open");
+      closeAllInfoDropdowns();
+      if (willOpen) {
+        inDropdown.classList.add("is-open");
+        toggle.setAttribute("aria-expanded", "true");
+      }
+      return;
+    }
+
+    // Klik pada salah satu tautan kontak: biarkan link bekerja seperti biasa,
+    // dropdown-nya ditutup setelahnya.
+    if (e.target.closest(".info-dropdown-menu a")) {
+      closeAllInfoDropdowns();
     }
     return;
   }
-  if (!e.target.closest(".info-dropdown-menu")) {
-    closeAllInfoDropdowns();
-  }
-});
+
+  // Klik di luar area dropdown mana pun: tutup semuanya.
+  closeAllInfoDropdowns();
+}, true); // <- true = fase capture
 
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") closeAllInfoDropdowns();
 });
+
+/* Kalau panel nav hamburger ditutup, dropdown di dalamnya ikut ditutup
+   supaya tidak tertinggal dalam keadaan terbuka saat dibuka lagi. */
+document.addEventListener("click", function (e) {
+  if (e.target.closest(".nav-toggle")) closeAllInfoDropdowns();
+}, true);
 
 /* ---------- PEMASANGAN HEADER & FOOTER KE SETIAP HALAMAN ---------- */
 document.addEventListener("DOMContentLoaded", function () {
